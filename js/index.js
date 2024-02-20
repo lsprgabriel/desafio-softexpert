@@ -54,37 +54,21 @@ const setInitialCartStorage = () => {
 
 setInitialCartStorage();
 
-// for(let i = 0; i < storage.length; i++) {
-//     let data = storage[i];
-//     let cellData = [
-//         data.product,
-//         data.price,
-//         data.amount,
-//         data.total,
-//         `<td><button onClick='onProductDelete(${i})'>Delete</button></td>`
-//     ]
+for(let i = 0; i < storage.length; i++) {
+    let data = storage[i];
+    let cellData = [ data.product, data.price, data.amount, data.total,
+        `<td><button onClick='onProductDelete(${i})'>Delete</button></td>`
+    ]
 
-//     var tbodyRef = document.getElementById('productTable').getElementsByTagName('tbody')[0];
+    var tbodyRef = document.getElementById('productTable').getElementsByTagName('tbody')[0];
 
-//     var newRow = tbodyRef.insertRow();
+    var newRow = tbodyRef.insertRow();
 
-//     // for(let j = 0; j < 4; j++) {
-//     //     let cell = newRow.insertCell(j);
-//     // }
-
-
-//     let cell1 = newRow.insertCell(0);
-//     let cell2 = newRow.insertCell(1);
-//     let cell3 = newRow.insertCell(2);
-//     let cell4 = newRow.insertCell(3);
-//     let cell5 = newRow.insertCell(4);
-
-//     cell1.innerHTML = data.product
-//     cell2.innerHTML = data.price
-//     cell3.innerHTML = data.amount
-//     cell4.innerHTML = data.total;
-//     cell5.innerHTML = `<td><button onClick='onProductDelete(${i})'>Delete</button></td>`;
-// }
+    for(let j = 0; j < 5; j++) {
+        let cell = newRow.insertCell(j);
+        cell.innerHTML = cellData[j]
+    }
+}
 
 
 const onProductSubmit = (form) => {
