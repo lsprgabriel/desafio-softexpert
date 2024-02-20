@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./js/index.js" defer></script>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suite Store</title>
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="./index.html">Suite Store</a>
+        <ul>
+            <li><a href="./pages/products.html">Products</a></li>
+            <li><a href="./pages/categories.html">Categories</a></li>
+            <li><a href="./pages/history.html">History</a></li>
+        </ul>
+    </header>
+    <main>
+        <section class="form-container">
+            <form id="productForm" onsubmit="onProductSubmit(this)">
+                <div class="form-input">
+                    <input type="text" placeholder="Product" name="product" id="product">
+                </div>
+                <div class="form-inputs">
+                    <div class="amount-input">
+                        <input type="number" placeholder="Amount" name="amount" id="">
+                    </div>
+                    <div class="tax-value-input">
+                        <input type="number" placeholder="Tax" name="tax" id="">
+                    </div>
+                    <div class="unit-price-input">
+                        <input type="number" placeholder="Price" name="price" id="">
+                    </div>
+                </div>
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+        <div class="vl"></div>
+        <section class="table-section">
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="tax-total">
+                <div class="tax-total-input">
+                    <label for="">Tax:</label>
+                    <input type="text" placeholder="$3.00"  name="" id="">
+                </div>
+                <div class="tax-total-input">
+                    <label for="">Total:</label>
+                    <input type="text" placeholder="$49.00" name="" id="">
+                </div>
+            </div>
+            <div class="table-section-buttons">
+                <button onClick="onCancel()">Cancel</button>
+                <button onClick="onFinish()">Finish</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
