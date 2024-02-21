@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="../js/products.js" defer></script>
     <link rel="stylesheet" href="../styles/products.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,21 +23,20 @@
     </header>
     <main>
         <section class="form-section">
-            <form action="">
+            <form onsubmit="onProductSubmit(this)">
                 <div class="form-input">
-                    <input type="text" placeholder="Product name" name="" id="">
+                    <input type="text" placeholder="Product name" name="product">
                 </div>
                 <div class="form-inputs">
-                    <div class="">
-                        <input type="text" placeholder="Amount" name="" id="">
+                    <div>
+                        <input type="number" placeholder="Amount" name="amount">
                     </div>
-                    <div class="">
-                        <input type="text" placeholder="Unit price" name="" id="">
+                    <div>
+                        <input type="number" placeholder="Unit price" name="price">
                     </div>
-                    <div class="">
-                        <select required>
+                    <div>
+                        <select id="categorySelector" name="category" required>
                             <option value="" disabled selected>Select a category</option>
-                            <option value="opcao1">Category</option>
                         </select>
                     </div>
                 </div>
@@ -44,32 +44,20 @@
             </form>
         </section>
         <section class="table-section">
-            <table>
-                <tr>
-                    <th>Code</th>
-                    <th>Product</th>
-                    <th>Amount</th>
-                    <th>Unit price</th>
-                    <th>Category</th>
-                </tr>
-                <tr>
-                    <td>001</td>
-                    <td>Rice</td>
-                    <td>10</td>
-                    <td>20.00</td>
-                    <td>Food</td>
-                    <td><button>View</button></td>
-                    <td><button>Delete</button></td>
-                </tr>
-                <tr>
-                    <td>002</td>
-                    <td>Beans</td>
-                    <td>1</td>
-                    <td>9.00</td>
-                    <td>Food</td>
-                    <td><button><a href="./details.html"></a>View</button></td>
-                    <td><button>Delete</button></td>
-                </tr>
+            <table id="productsTable">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Product</th>
+                        <th>Amount</th>
+                        <th>Unit price</th>
+                        <th>Tax in $$$</th>
+                        <th>Total unit price</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
             </table>
         </section>
     </main>

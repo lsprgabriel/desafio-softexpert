@@ -21,7 +21,7 @@
     </header>
     <main>
         <section class="form-container">
-            <form id="productForm" onsubmit="onProductSubmit(this)">
+            <form onsubmit="onCartSubmit(this)">
                 <div class="form-input">
                     <input type="text" placeholder="Product" name="product" id="product">
                 </div>
@@ -41,7 +41,7 @@
         </section>
         <div class="vl"></div>
         <section class="table-section">
-            <table id="productTable">
+            <table id="cartTable">
                 <thead>
                     <tr>
                         <th>Product</th>
@@ -56,11 +56,11 @@
             <div class="tax-total">
                 <div class="tax-total-input">
                     <label for="">Tax:</label>
-                    <input type="text" placeholder="$3.00"  name="" id="" disabled>
+                    <input type="text" placeholder="$0"  name="" id="taxValue" disabled>
                 </div>
                 <div class="tax-total-input">
                     <label for="">Total:</label>
-                    <input type="text" placeholder="$49.00" name="" id="" disabled>
+                    <input type="text" placeholder="$0" name="" id="totalPrice" disabled>
                 </div>
             </div>
             <div class="table-section-buttons">

@@ -92,13 +92,13 @@ td {
     border-bottom: 1px solid #000;
 }
 
-th:nth-last-child(-n+4),
-td:nth-last-child(-n+6) {
+th:nth-last-child(-n+6),
+td:nth-last-child(-n+7) {
     width: 3vw;
     border-left: 1px solid rgb(160 160 160);
 }
 
-td:nth-last-child(-n+2) {
+td:nth-last-child(-n+1) {
     width: 1px;
     border: 0;
 }
