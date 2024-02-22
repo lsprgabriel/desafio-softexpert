@@ -1,12 +1,24 @@
-const table = "cart_document"
+const doc = "cart_document"
+const productsDocument = "products_document"
+const historyDocument = "history_document"
 
-const getCartStorage = () => JSON.parse(localStorage.getItem(table)) ?? []
-const setCartStorage = (data) => localStorage.setItem(table, JSON.stringify(data))
+const getCartStorage = () => JSON.parse(localStorage.getItem(doc)) ?? []
+const getProductsStorage = () => JSON.parse(localStorage.getItem(productsDocument)) ?? []
+const getHistoryStorage = () => JSON.parse(localStorage.getItem(historyDocument)) ?? []
+
+const setCartStorage = (data) => localStorage.setItem(doc, JSON.stringify(data)) 
+const setHistoryStorage = (data) => localStorage.setItem(historyDocument, JSON.stringify(data))
 
 const addCartData = (data) => {
     const dbCart = getCartStorage();
     dbCart.push(data);
     setCartStorage(dbCart);
+}
+
+const addHistoryData = (data) => {
+    const dbHist = getHistoryStorage();
+    dbHist.push(data);
+    setHistoryStorage(dbHist);
 }
 
 const deleteCartData = (index) => {
@@ -20,47 +32,39 @@ const clearCartStorage = () => {
 }
 
 let storage = getCartStorage();
+let productsStorage = getProductsStorage();
+let historyStorage = getHistoryStorage();
 
-const setInitialCartStorage = () => {
-    if (storage.length == 0) {
-        let initCartData = [
-            {
-                product: "Rice",
-                price: 2.00,
-                amount: 2,
-                total: 4.00,
-            },
-            {
-                product: "Corn",
-                price: 6.00,
-                amount: 3,
-                total: 18.00,
-            },
-            {
-                product: "Potato",
-                price: 0.50,
-                amount: 21,
-                total: 10.50,
-            }
-        ]
-        initCartData.map((data) => {
-            addCartData({
-                product: data.product,
-                price: data.price,
-                amount: data.amount,
-                total: data.total,
-            })
-        })
-    }
+const productsQuery = (code) => {
+    let productObject;
+    productsStorage.map((product) => {
+        if (product["code"] == code) {
+            productObject = product
+        }
+    });
+    return productObject;
 }
 
-setInitialCartStorage();
+document.getElementById("productsSelector").addEventListener("click", (e) => {
+    document.getElementById("tax").value = productsQuery(e.target.value).unitTax
+    document.getElementById("price").value = productsQuery(e.target.value).unitPrice
+})
+
+productsStorage.map((product) => {
+    let select = document.getElementById("productsSelector");
+    let option = document.createElement("option");
+    option.text = product.product;
+    option.value = product.code;
+    select.add(option);
+})
 
 let totalPrice = 0;
+let totalTax = 0;
 
 for(let i = 0; i < storage.length; i++) {
     let data = storage[i];
     totalPrice = totalPrice + data.total;
+    totalTax = totalTax + productsQuery(data.code).unitTax * data.amount
     let cellData = [ data.product, data.price, data.amount, data.total,
         `<td><button onClick='onCartDelete(${i})'>Delete</button></td>`
     ]
@@ -77,19 +81,20 @@ for(let i = 0; i < storage.length; i++) {
             cell.innerHTML = cellData[j]
         }
     }
-    console.log(totalPrice)
 }
 
-document.getElementById("totalPrice").value = `$${ totalPrice }`;
+document.getElementById("totalPrice").value = `$${ (totalPrice).toFixed(2) }`;
+document.getElementById("totalTax").value = `$${(totalTax).toFixed(2)}`;
 
 const onCartSubmit = (form) => {
     alert("Product successfully added!");
     
     addCartData({
-        product: form.product.value,
-        price: form.price.value,
+        code: form.product.value,
+        product: productsQuery(form.product.value).product,
+        price: productsQuery(form.product.value).totalUnitPrice,
         amount: form.amount.value,
-        total: form.price.value * form.amount.value,
+        total: Number((productsQuery(form.product.value).totalUnitPrice * form.amount.value).toFixed(2)),
     })
 }
 
@@ -106,6 +111,12 @@ const onCancel = () => {
 
 const onFinish = () => {
     alert("Success! You finished your purchase!");
+    addHistoryData({
+        code: historyStorage.length,
+        products: storage,
+        tax: totalTax,
+        total: totalPrice
+    })
     clearCartStorage();
     window.location.reload();
 }

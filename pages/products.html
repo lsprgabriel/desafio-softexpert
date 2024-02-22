@@ -25,14 +25,14 @@
         <section class="form-section">
             <form onsubmit="onProductSubmit(this)">
                 <div class="form-input">
-                    <input type="text" placeholder="Product name" name="product">
+                    <input type="text" placeholder="Product name" name="product" required>
                 </div>
                 <div class="form-inputs">
                     <div>
-                        <input type="number" placeholder="Amount" name="amount">
+                        <input type="number" placeholder="Amount" name="amount" min="1" required>
                     </div>
                     <div>
-                        <input type="number" placeholder="Unit price" name="price">
+                        <input type="number" placeholder="Unit price" name="price" min="1" required>
                     </div>
                     <div>
                         <select id="categorySelector" name="category" required>

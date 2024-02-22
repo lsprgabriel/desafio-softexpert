@@ -67,7 +67,7 @@ main {
     margin-bottom: 5px;
 }
 
-.form-input input {
+.form-input select {
     width: 99.2%;
     height: 25px;
     margin: 10;

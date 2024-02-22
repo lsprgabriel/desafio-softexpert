@@ -1,7 +1,7 @@
-const table = "categories_document"
+const doc = "categories_document"
 
-const getCategoryStorage = () => JSON.parse(localStorage.getItem(table)) ?? []
-const setCategoryStorage = (data) => localStorage.setItem(table, JSON.stringify(data))
+const getCategoryStorage = () => JSON.parse(localStorage.getItem(doc)) ?? []
+const setCategoryStorage = (data) => localStorage.setItem(doc, JSON.stringify(data))
 
 const addCategoryData = (data) => {
     const dbCart = getCategoryStorage();

@@ -25,10 +25,10 @@
     <section class="form-section">
         <form id="categoryForm" onsubmit="onCategorySubmit(this)">
             <div class="">
-                <input type="text" placeholder="Category name" name="category" id="categoryValue">
+                <input type="text" placeholder="Category name" name="category" id="categoryValue" required>
             </div>
             <div class="">
-                <input type="number" placeholder="Tax" name="tax" id="taxValue">
+                <input type="number" placeholder="Tax" name="tax" id="taxValue" min="1" required>
             </div>
             <button type="submit">Add Category</button>
         </form>

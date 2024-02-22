@@ -1,10 +1,10 @@
-const table = "products_document"
+const doc = "products_document"
 const categoriesDocument = "categories_document"
 
-const getProductsStorage = () => JSON.parse(localStorage.getItem(table)) ?? []
+const getProductsStorage = () => JSON.parse(localStorage.getItem(doc)) ?? []
 const getCategoriesStorage = () => JSON.parse(localStorage.getItem(categoriesDocument)) ?? []
 
-const setProductsStorage = (data) => localStorage.setItem(table, JSON.stringify(data))
+const setProductsStorage = (data) => localStorage.setItem(doc, JSON.stringify(data))
 
 const addProductsData = (data) => {
     const dbProduct = getProductsStorage();
@@ -56,7 +56,11 @@ for (let i = 0; i < productsStorage.length; i++) {
 
     for (let j = 0; j < 8; j++) {
         let cell = newRow.insertCell(j);
-        cell.innerHTML = cellData[j]
+        if (j == 3 || j == 4 || j == 5) {
+            cell.innerHTML = `$${cellData[j]}`
+        } else {
+            cell.innerHTML = (cellData[j])
+        }
     }
 
 }

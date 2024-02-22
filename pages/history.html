@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="../js/history.js" defer></script>
     <link rel="stylesheet" href="../styles/history.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,24 +23,16 @@
     </header>
     <main>
         <section class="table-section">
-            <table>
-                <tr>
-                    <th>Code</th>
-                    <th>Tax</th>
-                    <th>Total</th>
-                </tr>
-                <tr>
-                    <td>001</td>
-                    <td>$2.00</td>
-                    <td>$20.00</td>
-                    <td><button>View</button></td>
-                </tr>
-                <tr>
-                    <td>002</td>
-                    <td>$0.50</td>
-                    <td>$10.00</td>
-                    <td><button>View</button></td>
-                </tr>
+            <table id="historyTable">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Tax</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
             </table>
         </section>
     </main>

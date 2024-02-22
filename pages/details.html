@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="../js/details.js" defer></script>
     <link rel="stylesheet" href="../styles/details.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +24,20 @@
     <main>
         <section class="product-section">
             <div class="product-name">
-                <h1>Product name</h1>
-                <p>Product description</p>
+                <h1>Your purchase:</h1>
             </div>
-                <div class="price-section">
-                    <p>Price: </p>
-                    <p>$10.00</p>
-                </div>
+                <table id="detailsTable">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
         </section>
     </main>
 </body>
